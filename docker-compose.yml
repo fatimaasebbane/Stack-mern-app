@@ -11,6 +11,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: mongodb
       MONGO_INITDB_ROOT_PASSWORD: mongodb
+    deploy:
+      replicas: 1  
 
   server:
     build:
@@ -22,6 +24,8 @@ services:
       MONGODB_URI: mongodb://mongodb:mongodb@mongodb:27017/mern-stack-db?authSource=admin
     depends_on:
       - mongodb
+    deploy:
+      replicas: 2  
 
   client:
     build:
@@ -31,6 +35,8 @@ services:
       - "3000:80"
     depends_on:
       - server
+    deploy:
+      replicas: 2 
 
 volumes:
   mongo_data:
