@@ -10,7 +10,7 @@ const App = () => {
 
   // Fetch todos from backend
   useEffect(() => {
-    axios.delete(`${process.env.REACT_APP_API_URL}/todos/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/todos`)
       .then(response => setTodos(response.data))
       .catch(error => console.error(error));
   }, []);
@@ -22,7 +22,7 @@ const App = () => {
 
   // Delete todo
   const deleteTodo = (id) => {
-    axios.delete(`http://localhost:5000/todos/${id}`)
+    axios.delete(`${process.env.REACT_APP_API_URL}/todos/${id}`)
       .then(() => {
         setTodos(todos.filter(todo => todo._id !== id));
       })
