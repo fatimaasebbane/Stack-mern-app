@@ -10,7 +10,7 @@ const App = () => {
 
   // Fetch todos from backend
   useEffect(() => {
-    axios.get('http://localhost:5000/todos')
+    axios.delete(`${process.env.REACT_APP_API_URL}/todos/${id}`)
       .then(response => setTodos(response.data))
       .catch(error => console.error(error));
   }, []);
